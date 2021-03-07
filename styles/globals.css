@@ -1,3 +1,5 @@
+@tailwind components;
+@tailwind utilities;
 @layer utilities {
   .text-gradient {
     background-clip: text;
