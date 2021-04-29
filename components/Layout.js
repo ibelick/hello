@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
         <title>⛵️ Julien Thibeaut - Developer front-end</title>
       </Head>
       <header className="w-full flex justify-center py-8 relative top-0">
-        <nav className="flex justify-between max-w-screen-sm w-full px-8 dark:text-white">
+        <nav className="flex justify-between max-w-screen-md px-6 w-full dark:text-white">
           <ul className="animate-spin">
             <Link href="/">
               <a>☻</a>
@@ -37,10 +37,14 @@ const Layout = ({ children }) => {
               </Link>
             </li>
             <li className="mr-8">
-              <a href="#work">work</a>
+              <Link href="/#work">
+                <a>work</a>
+              </Link>
             </li>
             <li className="mr-8">
-              <a href="#me">me</a>
+              <Link href="/#me">
+                <a>me</a>
+              </Link>
             </li>
             <li>
               <a onClick={switchTheme} className="cursor-pointer ">
@@ -52,9 +56,7 @@ const Layout = ({ children }) => {
           </ul>
         </nav>
       </header>
-      <main className="flex items-center flex-col dark:text-white">
-        {children}
-      </main>
+      <main className="dark:text-white">{children}</main>
     </div>
   );
 };

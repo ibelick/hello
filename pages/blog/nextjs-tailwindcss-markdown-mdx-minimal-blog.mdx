@@ -3,18 +3,33 @@ export const metadata = {
   date: "2021-04-04",
 };
 
-export const test = "hello";
+<article className="prose py-12 px-6 mx-auto dark:prose-dark">
 
-<article className="prose dark:prose-dark">
+# Minimal blog with nextjs, tailwindcss and markdown (MDX)
 
-# Minimal blog with nextjs, tailwindcss and markdown
+I decided to do a little blog on my personal site. As the first article, this is how I build it.
 
-intro
-presentation me
-short presentation nextjs (reprendre terme rauchg pour décrire nextjs)
-For this article, I will assume you are already familiar with JavaScript and React
+## Tools
 
-project setup
+[Next.js](https://nextjs.org/) is my favorite tools for making websites.
+With a concept of zero configuration, with a lots of features (including hybrid static, server rendering, routing system, etc.) it letting you focus exclusively on your product and building it in a pleasant way.
+[Tailwindcss](https://tailwindcss.com/) is a utility-first CSS framework for rapidly building styles.
+[MDX](https://mdxjs.com/) is "Markdown for the component era". MDX let you write JSX in your Markdown documents.
+
+For this article, I will assume you are already familiar with JavaScript and React.
+
+## Project setup
+
+```js live=true
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+
+```js
+const TestComponent = () => {
+  return <div>Test</div>;
+};
+```
 
 command line pour dev
 

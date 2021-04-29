@@ -1,17 +1,9 @@
 // @todo: add darkmode, add :), add music tab, moodboard
 // update card with product icon
 export default function Home() {
-  // const postDirectory = path.join(process.cwd(), "pages/blog");
-  // const postFilenames = fs
-  //   .readdirSync(postDirectory)
-  //   .filter((path) => /\.mdx?$/.test(path));
-  // const postModules = await Promise.all(
-  //   postFilenames.map(async (slug) => import(`./${slug}`))
-  // );
-  // const postMetadata = postModules.map((m) => m.metadata);
   return (
     <>
-      <section className="max-w-screen-sm py-36 mb-14">
+      <section className="max-w-screen-md px-6 mx-auto py-36 mb-14">
         <p className="mb-8 text-gray-600 dark:text-gray-400">
           julien.thibeaut[at]gmail.com
         </p>
@@ -19,21 +11,18 @@ export default function Home() {
           Hello! 👋 I’m Julien, a passionate JavaScript developer with a focus
           on front-end development.
         </p>{" "}
-        {/* <p>
-            I love creating beautiful, interactive user interfaces and designing
-            scalable, performant and accessible products.
-          </p>{" "} */}
         <p className="mt-4">
-          Specialities: JavaScript, React, React Native, Next.js, TypeScript
+          <span className="underline">Specialities:</span> JavaScript, React,
+          React Native, Next.js, TypeScript
         </p>
       </section>
-      <section className="max-w-screen-sm mb-20" id="work">
+      <section className="max-w-screen-md px-6 mx-auto mb-20" id="work">
         <h3 className="mb-4 font-semibold text-gradient bg-gradient-to-r from-green-400 to-red-500">
           Last work →
         </h3>
         <div className="flex flex-col">
           <a
-            href="https://nextjs.org/docs"
+            href="https://lafourche.fr/"
             className="shadow-md hover:shadow-lg transition rounded mb-4 p-4 border border-gray-50 dark:border-gray-800 dark:hover:border-gray-400"
           >
             <div className="flex mb-2">
@@ -51,7 +40,7 @@ export default function Home() {
             </p>
           </a>
           <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="https://uxcademy.com/"
             className="shadow-md hover:shadow-lg transition rounded mb-4 p-4 border border-gray-50 dark:border-gray-800 dark:hover:border-gray-400"
           >
             <div className="flex mb-2">
@@ -70,7 +59,10 @@ export default function Home() {
           </a>
         </div>
       </section>
-      <section className="max-w-screen-sm w-full text-left mb-20" id="me">
+      <section
+        className="max-w-screen-md px-6 mx-auto w-full pb-12 text-left"
+        id="me"
+      >
         <h3 className="mb-4 font-semibold text-gradient bg-gradient-to-r from-yellow-500 to-yellow-800">
           About me →
         </h3>
@@ -83,13 +75,24 @@ export default function Home() {
           I love creating beautiful, interactive user interfaces and designing
           scalable, performant and accessible products.
         </p>
-        <p className="mb-2">
+        <p>
           In addition to the frontend, I like to be part of the design process.
           I love design in the broad sense, for my job I'm interested in user
           interfaces, experiences and design systems.
         </p>
         {/* ethical tech */}
         {/* Willing to work with socially and environmentally responsible organisations 🌎 */}
+        {/* Becoming a developer started out of a need to create - I didn't realize
+        it would turn into my career. I love constructing beautiful interfaces
+        and architecting applications from the ground-up. I'm primarily focused
+        on web development and enjoy working with JavaScript, React, Next.js,
+        and Node.js. Outside of development, I'm also interested in design,
+        UI/UX, and creating an accessible web for all. I enjoy public speaking
+        and mentoring others. On the side, I do freelance
+        videography/photography and I'm a wanna-be musician. I'm passionate
+        about technology and enjoy staying up to date on all things tech,
+        engineering, and business. Feel free to reach out to me any time for
+        coffee or just to chat at me@leerob.io. */}
       </section>
     </>
   );

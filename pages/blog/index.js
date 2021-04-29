@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Blog = ({ posts }) => {
   return (
-    <section className="max-w-screen-sm py-36 min-h-screen">
+    <section className="max-w-screen-md px-6 mx-auto py-36 min-h-screen">
       <ul>
         {posts.map((post, index) => {
           return (
@@ -12,9 +12,11 @@ const Blog = ({ posts }) => {
               <Link href={`/blog/${post.slug}`}>
                 <a>
                   <div>
-                    <span>{post.date}</span>
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {post.date}
+                    </span>
                     <span className="mx-1">✦</span>
-                    <a className="font-semibold text-gradient bg-gradient-to-r from-blue-500 to-purple-600">
+                    <a className="font-semibold text-gradient bg-gradient-to-r from-blue-500 to-purple-600 hover:bg-gradient-to-r from-blue-500 to-purple-600">
                       {post.title}
                     </a>
                   </div>
