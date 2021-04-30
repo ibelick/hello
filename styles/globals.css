@@ -10,3 +10,15 @@
 * {
   scroll-behavior: smooth;
 }
+
+.light ::selection {
+  background: yellow;
+  color: #000;
+  -webkit-text-fill-color: #000;
+}
+
+.dark ::selection {
+  background: blue;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}

@@ -57,6 +57,23 @@ const Layout = ({ children }) => {
         </nav>
       </header>
       <main className="dark:text-white">{children}</main>
+      <footer className="w-full flex justify-center py-8 relative top-0">
+        <nav className="flex justify-between max-w-screen-md px-6 w-full text-gray-500">
+          <ul>
+            <li>© {new Date().getFullYear()}</li>
+          </ul>
+          <ul className="flex justify-end">
+            <li className="mr-8">
+              <a href="https://www.linkedin.com/in/julien-thibeaut-973b595b/">
+                Linkedin
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/JulienIbe">Twitter</a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
     </div>
   );
 };
