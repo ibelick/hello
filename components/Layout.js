@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="dark:bg-black">
+    <div className="flex flex-col min-h-screen dark:bg-black">
       <Head>
         <title>⛵️ Julien Thibeaut - Developer front-end</title>
       </Head>
@@ -36,16 +36,6 @@ const Layout = ({ children }) => {
                 <a>blog</a>
               </Link>
             </li>
-            <li className="mr-8">
-              <Link href="/#work">
-                <a>work</a>
-              </Link>
-            </li>
-            <li className="mr-8">
-              <Link href="/#me">
-                <a>me</a>
-              </Link>
-            </li>
             <li>
               <a onClick={switchTheme} className="cursor-pointer ">
                 <span className="flex transition-transform duration-500 ease-in-out transform hover:scale-50 dark:text-white">
@@ -56,7 +46,7 @@ const Layout = ({ children }) => {
           </ul>
         </nav>
       </header>
-      <main className="dark:text-white">{children}</main>
+      <main className="flex-1 dark:text-white">{children}</main>
       <footer className="w-full flex justify-center py-8 relative top-0">
         <nav className="flex justify-between max-w-screen-md px-6 w-full text-gray-500">
           <ul>

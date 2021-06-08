@@ -1,5 +1,5 @@
-// @todo: add darkmode, add :), add music tab, moodboard
-// update card with product icon
+// import Image from "next/image";
+
 export default function Home() {
   return (
     <>
@@ -16,68 +16,59 @@ export default function Home() {
           React Native, Next.js, TypeScript
         </p>
       </section>
-      <section className="max-w-screen-md px-6 mx-auto mb-20" id="work">
+      {/* WIP */}
+      {/* <section className="max-w-screen-md px-6 mx-auto mb-20">
         <h3 className="mb-4 font-semibold text-gradient bg-gradient-to-r from-green-400 to-red-500">
           Last works →
         </h3>
         <div className="flex flex-col">
-          <a
-            href="https://lafourche.fr"
-            className="shadow-sm hover:shadow transition rounded-2xl mb-10 border border-transparent dark:border-gray-800 dark:hover:border-gray-400 overflow-hidden"
-          >
-            <div className="flex flex-col">
-              <img
-                className="max-h-64 object-cover"
-                src="https://assets.lafourche.fr/s/files/1/0009/9565/5740/files/FOURCHE_DIGI_GREEN_72DPI_4d10b7f8-4b8a-43aa-a38e-d3a110819f3d_1200x1200.png?v=1577697633"
-                alt="test"
+          <a href="https://lafourche.fr" className="flex items-center mb-2">
+            <div className="w-20 mr-4">
+              <Image
+                src="/lafourchelogo.png"
+                width={16}
+                height={9}
+                layout="responsive"
               />
-              <div className="p-4 bg-white dark:bg-black">
-                <div className="flex mb-3">
-                  <h3 className="font-medium">La Fourche</h3>
-                  <span className="mx-1">⎯⎯⎯</span>
-                  <p className="text-gray-900 dark:text-gray-100">
-                    Online organic store up to 50% cheaper
-                  </p>
-                </div>
-                <p className="text-gray-800 dark:text-gray-200">
-                  I helped them with the exit of shopify by migrating the
-                  frontend to Next.js. I worked on the front end architecture,
-                  design tokens and system.
-                </p>
-              </div>
             </div>
+            <p className="text-lg">
+              Shopify to Next.js, Front-end architecture, lots of features 🌿
+            </p>
           </a>
-          <a
-            href="https://uxcademy.com"
-            className="shadow-sm hover:shadow transition rounded-2xl mb-10 border border-transparent dark:border-gray-800 dark:hover:border-gray-400 overflow-hidden"
-          >
-            <div className="flex flex-col">
+          <div className="flex flex-col mb-24">
+            <a href="https://lafourche.fr">
               <img
-                className="max-h-64 object-cover"
-                src="https://images.prismic.io/uxcademy/6f997629-04da-494c-ab7c-0b04f2bc5d78_salepageInter.jpg?auto=compress,format"
-                alt="La Fourche"
+                className="max-h-96 object-cover border rounded-2xl border-transparent"
+                src="/lafourchedesktopscreen.png"
+                alt="lafourche desktop"
               />
-              <div className="p-4 bg-white dark:bg-black">
-                <div className="flex mb-3">
-                  <h3 className="font-medium">uxcademy</h3>
-                  <span className="mx-1">⎯⎯⎯</span>
-                  <p className="text-gray-900 dark:text-gray-100">
-                    Learn UI/UX design with interactive courses
-                  </p>
-                </div>
-                <p className="text-gray-800 dark:text-gray-200">
-                  I developed the platform with Next.js and firebase. I'm
-                  working with @maximebeneteau on the product. New course soon.
-                </p>
-              </div>
+            </a>
+          </div>
+          <a href="https://uxcademy.com" className="flex items-center mb-2">
+            <div className="w-6 mr-4">
+              <Image
+                src="/uxcademylogo.svg"
+                width={9}
+                height={9}
+                layout="responsive"
+              />
             </div>
+            <p className="text-lg">
+              Learn UI/UX design with interactive courses 👩‍🏫
+            </p>
           </a>
+          <div className="flex flex-col mb-24">
+            <a href="https://uxcademy.com">
+              <img
+                className="max-h-96 object-cover border rounded-2xl border-transparent"
+                src="/uxcademydesktopscreen.png"
+                alt="lafourche desktop"
+              />
+            </a>
+          </div>
         </div>
       </section>
-      <section
-        className="max-w-screen-md px-6 mx-auto w-full pb-12 text-left"
-        id="me"
-      >
+      <section className="max-w-screen-md px-6 mx-auto w-full pb-12 text-left">
         <h3 className="mb-4 font-semibold text-gradient bg-gradient-to-r from-yellow-500 to-yellow-800">
           About me →
         </h3>
@@ -86,28 +77,27 @@ export default function Home() {
           websites/apps with React, React Native and Next.js.
         </p>
         <p className="mb-2">
-          I love constructing beautiful, interactive user interfaces and
-          designing scalable, performant products.
-        </p>
-        <p className="mb-2">
           In addition to the frontend, I like to be part of the design process.
           I love design in the broad sense, for my job I'm interested in user
           interfaces, experiences and design systems.
         </p>
         <p className="mb-2">
-          I like the{" "}
+          I was brought to the code by the{" "}
           <a href="https://en.wikipedia.org/wiki/Maker_culture">
             <i>maker</i>
           </a>{" "}
-          movement, that's what brought me to code. I always love to build
-          products to take a step back from my “daily” work and to learn new
-          things.
+          movement, so I like to invest time in sides projects.
+        </p>
+        <p className="mb-2">
+          When I am not coding, I can spend time on: cooking, listening to Frank
+          Ocean, reading a book, running, learning music production or eating
+          Margherita 🍕.
         </p>
         <p>
-          Last words, I currently live in Paris and I'm willing to work with
-          socially and environmentally responsible organisations. 🌎
+          Last words, I currently live in Belleville, Paris and I'm willing to
+          work with socially and environmentally responsible organisations. 🌎
         </p>
-      </section>
+      </section> */}
     </>
   );
 }
