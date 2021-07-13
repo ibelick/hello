@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 
 import { useTheme } from "next-themes";
@@ -20,15 +19,14 @@ const Layout = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen dark:bg-black">
-      <Head>
-        <title>⛵️ Julien Thibeaut - Developer front-end</title>
-      </Head>
       <header className="w-full flex justify-center py-8 relative top-0">
         <nav className="flex justify-between max-w-screen-md px-6 w-full dark:text-white">
           <ul className="animate-spin">
-            <Link href="/">
-              <a>☻</a>
-            </Link>
+            <li>
+              <Link href="/">
+                <a>☻</a>
+              </Link>
+            </li>
           </ul>
           <ul className="flex justify-end">
             <li className="mr-8">
@@ -49,18 +47,22 @@ const Layout = ({ children }) => {
       <main className="flex-1 dark:text-white">{children}</main>
       <footer className="w-full flex justify-center py-8 relative top-0">
         <nav className="flex justify-between max-w-screen-md px-6 w-full text-gray-500">
-          <ul>
+          <ul className="flex">
             <li>© {new Date().getFullYear()}</li>
+            <li className="mx-2">⎯⎯⎯⎯</li>
+            <li>
+              <a href="https://twitter.com/JulienIbe">twitter</a>
+            </li>
           </ul>
           <ul className="flex justify-end">
+            {/* <li className="mr-8">
+              <a href="https://github.com/JulienThibeaut">Github</a>
+            </li>
             <li className="mr-8">
               <a href="https://www.linkedin.com/in/julien-thibeaut-973b595b/">
                 Linkedin
               </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/JulienIbe">Twitter</a>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </footer>

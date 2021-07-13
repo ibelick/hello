@@ -3,7 +3,10 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   darkMode: "class",
-  purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
+  purge: [
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       typography(theme) {
@@ -47,9 +50,5 @@ module.exports = {
       typography: ["dark"],
     },
   },
-  plugins: [
-    require("@tailwindcss/typography")({
-      modifiers: [],
-    }),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };

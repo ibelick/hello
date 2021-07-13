@@ -1,5 +1,6 @@
 // import Image from "next/image";
 
+// inspi: ps2 screen
 export default function Home() {
   return (
     <>

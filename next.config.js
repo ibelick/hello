@@ -3,6 +3,5 @@ const withMDX = require("@next/mdx")({
 });
 
 module.exports = withMDX({
-  // Pick up MDX files in the /pages/ directory
   pageExtensions: ["js", "jsx", "md", "mdx"],
 });

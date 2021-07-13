@@ -4,21 +4,21 @@ import Link from "next/link";
 
 const Blog = ({ posts }) => {
   return (
-    <section className="max-w-screen-md px-6 mx-auto py-36 min-h-screen">
+    <section className="max-w-screen-md px-6 mx-auto py-36">
       <ul>
-        {posts.map((post, index) => {
+        {posts.map((post) => {
           return (
-            <li key={index} className="mb-6">
+            <li key={post.slug} className="mb-6">
               <Link href={`/blog/${post.slug}`}>
                 <a>
                   <div>
                     <span className="text-gray-600 dark:text-gray-300">
-                      {post.date}
+                      {new Date(post.date).toLocaleDateString()}
                     </span>
                     <span className="mx-1">✦</span>
-                    <a className="font-semibold text-gradient bg-gradient-to-r from-blue-500 to-purple-600 hover:bg-gradient-to-r from-blue-500 to-purple-600">
+                    <span className="font-semibold text-gradient bg-gradient-to-r from-blue-500 to-purple-600 hover:bg-gradient-to-r from-blue-500 to-purple-600">
                       {post.title}
-                    </a>
+                    </span>
                   </div>
                 </a>
               </Link>

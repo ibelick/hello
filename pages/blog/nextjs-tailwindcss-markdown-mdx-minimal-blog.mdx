@@ -1,58 +1,261 @@
+import { NextSeo } from "next-seo";
+import { ArticleJsonLd } from "next-seo";
+
 export const metadata = {
-  title: "Minimal blog with nextjs, tailwindcss and markdown!",
-  date: "2021-04-04",
+  title: "Minimal blog with Next.js, Tailwind CSS, and markdown (MDX)",
+  description:
+    "How to build a minimal blog with Next.js, Tailwind CSS, and MDX?",
+  date: "2021-07-23T00:00",
 };
 
+<!-- add layout component -->
+
+<NextSeo
+  title={metadata.title}
+  description={metadata.description}
+  openGraph={{
+    url: 'https://www.url.ie/a',
+    title: metadata.title,
+    description: metadata.description,
+  }}
+  canonical="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
+/>
+<ArticleJsonLd
+  url="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
+  title={metadata.title}
+  datePublished={metadata.date}
+  dateModified={metadata.date}
+  authorName="Julien Thibeaut"
+  publisherName="Julien Thibeaut"
+  description={metadata.description}
+/>
 <article className="prose py-12 px-6 mx-auto dark:prose-dark">
 
-# Minimal blog with nextjs, tailwindcss and markdown (MDX)
+# Minimal blog with Next.js, Tailwind CSS, and markdown (MDX)
 
-I decided to do a little blog on my personal site. As the first article, this is how I build it.
+I decided to add a blog to my website. Here’s how I built it for my first article. I want something minimal, fast, and SEO-friendly.
 
 ## Tools
 
-[Next.js](https://nextjs.org/) is my favorite tools for making websites.
-With a concept of zero configuration, with a lots of features (including hybrid static, server rendering, routing system, etc.) it letting you focus exclusively on your product and building it in a pleasant way.
-[Tailwindcss](https://tailwindcss.com/) is a utility-first CSS framework for rapidly building styles.
-[MDX](https://mdxjs.com/) is "Markdown for the component era". MDX let you write JSX in your Markdown documents.
+[Next.js](https://nextjs.org/) is my favorite tool for making websites.
+With a concept of zero-configuration, a lot of features (image optimization, SSG and SSR, incremental static regeneration, routing system, etc.) it lets you focus exclusively on your product and building it pleasantly.
+[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework that builds styles super quickly.
+[MDX](https://mdxjs.com/) is "Markdown for the component era". It lets you write JSX in your Markdown documents.
 
 For this article, I will assume you are already familiar with JavaScript and React.
 
 ## Project setup
 
-```js live=true
-var s = "JavaScript syntax highlighting";
-alert(s);
+To create a Next.js project with Tailwind CSS, in your terminal, you can use
+
+```terminal
+npx create-next-app -e with-tailwindcss my-project
+cd my-project
 ```
 
+Then, `npm run dev`, and you’re good. 😎
+
+If you want do start a project with manual setup, you can reach the Next.js [doc](https://nextjs.org/docs/getting-started).
+For adding Tailwind CSS to an existing Next.js project, you can also check the [doc](https://tailwindcss.com/docs/guides/nextjs).
+
+### Structure
+
+Next.js has a `/pages` folder where every page of our website goes.
+For our blog, we will have
+
+```
+pages/
+  blog/
+    index.js
+    my-first-blogpost.mdx
+```
+
+## MDX 🔥
+
+With [MDX](https://mdxjs.com/), we can mixes markdown with JavaScript and JSX components. It's such a powerful tool for react developers.
+If you don't know how to write markdown, there are a lot of guides, you can check this [one](https://about.gitlab.com/handbook/markdown-guide/) for example.
+You can [try to write MDX code](https://mdxjs.com/playground). For example, we can add:
+
+```JSX
+# Example of JSX embedded in Markdown
+
+<div style={{ padding: '16px', backgroundColor: 'lightpink' }}>
+  <h3>This is JSX</h3>
+</div>
+```
+
+### Why markdown?
+
+_Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents_.
+It's a very used language in the developer area, in our next project we have a `README.md`, it's markdown. It's easy to use, fast and multi-platform.
+
+Alternatively, we can also use a CMS (Content Management System). There is a lot (like [prismic](https://prismic.io), [strapi](https://strapi.io), etc.) and generally, they offer a free plan for solo users.
+But if like me, you're a developer and you're managing your blog solo, I'd personally prefer MDX.
+
+### MDX + Next.js?
+
+There are different ways to use MDX with Next.js. I would use [`@next/mdx`](https://mdxjs.com/getting-started/next).
+
+In your terminal:
+
+```
+npm install --save @next/mdx @mdx-js/loader
+```
+
+To treat MDX as pages, we will add in our `next.config.js`
+
 ```js
-const TestComponent = () => {
-  return <div>Test</div>;
+const withMDX = require("@next/mdx")({
+  extension: /\.(md|mdx)$/,
+});
+
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "md", "mdx"],
+});
+```
+
+Now, if you add `first-post.mdx` in `/blog` and write some markdown there, like:
+
+```mdx
+# It's my first blog post.
+
+## Some title
+
+Some text.
+```
+
+Run your Next.js project with `npm run dev` go to `http://localhost:3000/blog/first-post` and here we go, we can see our first page.
+
+### Tailwind CSS + MDX?
+
+With MDX, we can write jsx, and so we can add css class, let add some padding and margin to our blog post.
+
+```JSX
+<article className="py-12 px-6 mx-auto">
+  # It's my first blog post.
+
+  ## Some title
+
+  Some text.
+</article>
+```
+
+For fonts, Tailwind CSS provides a [pluging](https://github.com/tailwindlabs/tailwindcss-typography) to style our HTML elements generated from mdx. After installing the plugin, all we have to to is add prose class `<article className="prose ...">`
+
+## Fetch and dynamic import blog posts
+
+Right now, we can write a page in mdx with some Tailwind CSS styling.
+Now, we want a page with all our blog posts.
+For this, we will firstly add `metadata` in our posts. Metadata will allow us to describe the contents of our mdx file.
+
+In `/blog/first-post.mdx`:
+
+```jsx
+export const metadata = {
+  title: "Minimal blog with Next.js, Tailwind CSS and markdown!",
+  description:
+    "How to build a minimal blog with Next.js, Tailwind CSS and MDX?",
+  date: "2021-07-23",
 };
 ```
 
-command line pour dev
+To build our page, we need to import:
 
-structure
+```jsx
+import fs from "fs";
+import path from "path";
+import Link from "next/link";
+```
 
-tailwind css
+[fs](https://github.com/nodejs/node/blob/master/doc/api/fs.md) will let us interact with the file system and [path](https://github.com/nodejs/node/blob/master/doc/api/path.md) provides utilities for working with file and directory paths.
+[Link](https://nextjs.org/docs/api-reference/next/link) will let the client navigate through blog post.
 
-why markdown
-alternative cms (prismic, etc)
+Then, we will use [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) to fetch all our blog posts.
 
-rendering markdown
-il y a différentes options pour travailler le mdx avec nextjs. Je vais utiliser pour ma part @next/mdx.
+```jsx
+export const getStaticProps = async () => {
+  const postDirectory = path.join(process.cwd(), "pages/blog");
+  const postFilenames = fs
+    .readdirSync(postDirectory)
+    .filter((path) => /\.mdx?$/.test(path));
 
-tailwind css + markdown
-tailwind a sorti un plugin https://github.com/tailwindlabs/tailwindcss-typography/blob/master/README.md
-super simple on rajoute className="prose" et on embarque le style tailwind
+  const posts = postFilenames.map((file) => {
+    return {
+      ...require(`./${file}`).metadata,
+      slug: file.replace(".mdx", ""),
+    };
+  });
 
-homepage
-comment get l'ensemble des blogs posts, explication rapide de fs, path.
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+```
 
-random links
-https://whoisryosuke.com/blog/2020/using-mdx-with-nextjs/
-https://sergiodxa.com/articles/use-tailwindcss-typography-with-dark-mode-styles
-https://sarim.work/blog/dynamic-imports-mdx
+What did we do here?
+
+- With [`getStaticProps`](https://nextjs.org/docs/basic-features/pages#static-generation-recommended) the HTML is generated at build time and will be reused on each request. Here, it will let us fetch blogs Metadata and pass it in as props in our page.
+- `postDirectory` we get our directory where all our posts are
+- With `postFilenames` we get an array of `.mdx` files in our blog directory
+- Then we mapping our array of files in `posts`. `` ...require(`./${file}`).metadata `` will let us import our metadas and get the slug with `file.replace(".mdx", "")`
+- Finally, we return posts, we will then use them in our page
+
+We get all our blog posts, we need to pass it to the client so he can navigate in our blog.
+In the same file we can do:
+
+```jsx
+const Blog = ({ posts }) => {
+  return (
+    <section className="max-w-screen-md px-6 mx-auto py-36 min-h-screen">
+      <ul>
+        {posts.map((post) => {
+          return (
+            <li key={post.slug} className="mb-6">
+              <Link href={`/blog/${post.slug}`}>
+                <a>
+                  <div>
+                    <span>{post.date}</span>
+                    <span className="mx-1">-</span>
+                    <span className="font-semibold">{post.title}</span>
+                  </div>
+                </a>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+};
+```
+
+- Access posts from our `getStaticProps`
+- Style with Tailwind CSS
+- Map thought posts, for each post we render some jsx
+- Use [`Link`](https://nextjs.org/docs/api-reference/next/link) to do client-side navigation and recover our metadas with `date` and `title`
+
+Go to `http://localhost:3000/blog`, TADA 🎉, user can navigate into all our blog posts.
+
+## Hosting
+
+[Vercel](https://vercel.com/) is the company behind Next.js. It feels like magic to deploy a webapp with Vercel, it's easy, fast, comes with a lot of integrations and it's free for personal projects!
+You can get how to deploy a Next.js app with vercel in [Next.js doc](https://nextjs.org/docs/deployment#getting-started).
+
+## What's next?
+
+Now we have a minimal blog built with Next.js, Tailwind CSS, and MDX. We can go further and improve our blog a lot with things like:
+
+- SEO
+- Dark mode
+- Layout component
+- Image handling
+
+This is my first blog post, hope you liked it. You can dm me on Twitter if you have any questions. Thanks for reading!
+
+<p className="text-right text-gray-500">
+  Julien Thibeaut - <span>{new Date(metadata.date).toLocaleDateString()}</span>
+</p>
 
 </article>
