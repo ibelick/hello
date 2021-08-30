@@ -36,12 +36,16 @@ export const getStaticProps = async () => {
     .readdirSync(postDirectory)
     .filter((path) => /\.mdx?$/.test(path));
 
-  const posts = postFilenames.map((slug) => {
-    return {
-      ...require(`./${slug}`).metadata,
-      slug: slug.replace(".mdx", ""),
-    };
-  });
+  const posts = postFilenames
+    .map((slug) => {
+      return {
+        ...require(`./${slug}`).metadata,
+        slug: slug.replace(".mdx", ""),
+      };
+    })
+    .sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
 
   return {
     props: {

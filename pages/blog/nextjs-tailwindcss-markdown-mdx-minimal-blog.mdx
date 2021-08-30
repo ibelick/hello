@@ -29,7 +29,7 @@ export const metadata = {
   publisherName="Julien Thibeaut"
   description={metadata.description}
 />
-<article className="prose py-12 px-6 mx-auto dark:prose-dark">
+<article className="prose py-12 max-w-screen-md px-6 mx-auto dark:prose-dark">
 
 # Minimal blog with Next.js, Tailwind CSS, and markdown (MDX)
 
@@ -254,7 +254,7 @@ Now we have a minimal blog built with Next.js, Tailwind CSS, and MDX. We can go 
 
 This is my first blog post, hope you liked it. You can dm me on Twitter if you have any questions. Thanks for reading!
 
-<p className="text-right text-gray-500">
+<p className="text-right text-gray-600 dark:text-gray-400">
   Julien Thibeaut - <span>{new Date(metadata.date).toLocaleDateString()}</span>
 </p>
 

@@ -46,23 +46,19 @@ const Layout = ({ children }) => {
       </header>
       <main className="flex-1 dark:text-white">{children}</main>
       <footer className="w-full flex justify-center py-8 relative top-0">
-        <nav className="flex justify-between max-w-screen-md px-6 w-full text-gray-500">
+        <nav className="flex justify-between max-w-screen-md px-6 w-full text-gray-600 dark:text-gray-400">
           <ul className="flex">
             <li>© {new Date().getFullYear()}</li>
             <li className="mx-2">⎯⎯⎯⎯</li>
             <li>
-              <a href="https://twitter.com/JulienIbe">twitter</a>
+              <a href="https://twitter.com/Ibelick">twitter</a>
             </li>
           </ul>
           <ul className="flex justify-end">
-            {/* <li className="mr-8">
-              <a href="https://github.com/JulienThibeaut">Github</a>
+            <li className="flex">
+              <span className="flex text-green-600 mr-2">●</span>
+              Available for freelancing
             </li>
-            <li className="mr-8">
-              <a href="https://www.linkedin.com/in/julien-thibeaut-973b595b/">
-                Linkedin
-              </a>
-            </li> */}
           </ul>
         </nav>
       </footer>
