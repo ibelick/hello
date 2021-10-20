@@ -2,7 +2,19 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 
-const Blog = ({ posts }) => {
+type BlogPageProps = {
+  posts: Posts[];
+};
+
+type Posts = {
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  slug: string;
+};
+
+const BlogPage = ({ posts }: BlogPageProps) => {
   return (
     <section className="max-w-screen-md px-6 mx-auto py-36">
       <ul>
@@ -13,10 +25,10 @@ const Blog = ({ posts }) => {
                 <a>
                   <div>
                     <span className="text-gray-600 dark:text-gray-300">
-                      {new Date(post.date).toLocaleDateString()}
+                      {new Date(post.datePublished).toLocaleDateString()}
                     </span>
                     <span className="mx-1">✦</span>
-                    <span className="font-semibold text-gradient bg-gradient-to-r from-blue-500 to-purple-600 hover:bg-gradient-to-r from-blue-500 to-purple-600">
+                    <span className="font-semibold text-gradient bg-gradient-to-r from-blue-500 to-purple-600 hover:bg-gradient-to-r">
                       {post.title}
                     </span>
                   </div>
@@ -36,7 +48,7 @@ export const getStaticProps = async () => {
     .readdirSync(postDirectory)
     .filter((path) => /\.mdx?$/.test(path));
 
-  const posts = postFilenames
+  const posts: Posts[] = postFilenames
     .map((slug) => {
       return {
         ...require(`./${slug}`).metadata,
@@ -44,7 +56,10 @@ export const getStaticProps = async () => {
       };
     })
     .sort((a, b) => {
-      return new Date(b.date) - new Date(a.date);
+      return (
+        new Date(b.datePublished).getTime() -
+        new Date(a.datePublished).getTime()
+      );
     });
 
   return {
@@ -54,4 +69,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Blog;
+export default BlogPage;

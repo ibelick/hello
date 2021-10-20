@@ -5,7 +5,8 @@ export const metadata = {
   title: "Minimal blog with Next.js, Tailwind CSS, and markdown (MDX)",
   description:
     "How to build a minimal blog with Next.js, Tailwind CSS, and MDX?",
-  date: "2021-07-23T00:00",
+  datePublished: "2021-07-23T00:00",
+  dateModified: null,
 };
 
 <!-- add layout component -->
@@ -23,8 +24,8 @@ export const metadata = {
 <ArticleJsonLd
   url="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
   title={metadata.title}
-  datePublished={metadata.date}
-  dateModified={metadata.date}
+  datePublished={metadata.datePublished}
+  dateModified={metadata.dateModified}
   authorName="Julien Thibeaut"
   publisherName="Julien Thibeaut"
   description={metadata.description}
@@ -216,7 +217,7 @@ const Blog = ({ posts }) => {
               <Link href={`/blog/${post.slug}`}>
                 <a>
                   <div>
-                    <span>{post.date}</span>
+                    <span>{post.datePublished}</span>
                     <span className="mx-1">-</span>
                     <span className="font-semibold">{post.title}</span>
                   </div>
@@ -254,8 +255,12 @@ Now we have a minimal blog built with Next.js, Tailwind CSS, and MDX. We can go 
 
 This is my first blog post, hope you liked it. You can dm me on Twitter if you have any questions. Thanks for reading!
 
-<p className="text-right text-gray-600 dark:text-gray-400">
-  Julien Thibeaut - <span>{new Date(metadata.date).toLocaleDateString()}</span>
+<p className="text-sm text-right text-gray-600 dark:text-gray-400">
+  Published: {new Date(metadata.datePublished).toLocaleDateString()}{" "}
+  {metadata.dateModified
+    ? `❍ Last
+  update: ${new Date(metadata.dateModified).toLocaleDateString()}`
+    : null}
 </p>
 
 </article>

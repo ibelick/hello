@@ -1,9 +1,8 @@
 import Link from "next/link";
-
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 
-const Layout = ({ children }) => {
+const Layout: FC = ({ children }) => {
   const { theme, setTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
