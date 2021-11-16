@@ -17,7 +17,7 @@ const Layout: FC = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen dark:bg-black">
+    <div className="flex flex-col w-screen min-h-screen dark:bg-black">
       <header className="w-full flex justify-center py-8 relative top-0">
         <nav className="flex justify-between max-w-screen-md px-6 w-full dark:text-white">
           <ul className="animate-spin">
@@ -33,6 +33,11 @@ const Layout: FC = ({ children }) => {
                 <a>blog</a>
               </Link>
             </li>
+            <li className="mr-8">
+              <Link href="/now">
+                <a>now</a>
+              </Link>
+            </li>
             <li>
               <a onClick={switchTheme} className="cursor-pointer ">
                 <span className="flex transition-transform duration-500 ease-in-out transform hover:scale-50 dark:text-white">
@@ -45,7 +50,7 @@ const Layout: FC = ({ children }) => {
       </header>
       <main className="flex-1 dark:text-white">{children}</main>
       <footer className="w-full flex justify-center py-8 relative top-0">
-        <nav className="flex justify-between max-w-screen-md px-6 w-full text-gray-600 dark:text-gray-400">
+        <nav className="flex flex-wrap justify-between max-w-screen-md px-6 w-full text-gray-600 dark:text-gray-400">
           <ul className="flex">
             <li>© {new Date().getFullYear()}</li>
             <li className="mx-2">⎯⎯⎯⎯</li>
