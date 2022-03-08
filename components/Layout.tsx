@@ -60,7 +60,7 @@ const Layout: FC = ({ children }) => {
           </ul>
           <ul className="flex justify-end">
             <li className="flex">
-              <span className="flex text-green-600 mr-2">●</span>
+              <span className="flex text-red-600 mr-2">●</span>
               Available for freelancing
             </li>
           </ul>

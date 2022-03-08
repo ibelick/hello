@@ -1,12 +1,9 @@
 module.exports = {
-  future: {
-    purgeLayersByDefault: true,
-  },
-  darkMode: "class",
-  purge: [
+  content: [
     "./components/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       typography(theme) {
@@ -42,12 +39,6 @@ module.exports = {
           },
         };
       },
-    },
-  },
-  variants: {
-    extend: {
-      borderWidth: ["hover"],
-      typography: ["dark"],
     },
   },
   plugins: [require("@tailwindcss/typography")],
