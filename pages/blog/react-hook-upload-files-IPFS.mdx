@@ -1,0 +1,119 @@
+import { NextSeo } from "next-seo";
+import { ArticleJsonLd } from "next-seo";
+
+export const metadata = {
+  title: "Tiny react hook to upload files into IPFS",
+  description: "How to upload files or data into IPFS",
+  datePublished: "2022-03-17T00:00",
+  dateModified: null,
+};
+
+<NextSeo
+  title={metadata.title}
+  description={metadata.description}
+  openGraph={{
+    url: 'https://www.url.ie/a',
+    title: metadata.title,
+    description: metadata.description,
+  }}
+  canonical="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
+/>
+<ArticleJsonLd
+  url="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
+  title={metadata.title}
+  datePublished={metadata.datePublished}
+  dateModified={metadata.dateModified}
+  authorName="Julien Thibeaut"
+  publisherName="Julien Thibeaut"
+  description={metadata.description}
+/>
+<article className="prose py-12 max-w-screen-md px-6 mx-auto dark:prose-dark">
+
+# {metadata.title}
+
+For [hellocurator](https://www.hellocurator.xyz/) we want to let users upload an image through our application. The solution of choice for decentralized storing is IPFS.
+
+**IPFS is a distributed system for storing and accessing files, websites, applications, and data.**
+I recommend reading the [doc](https://docs.ipfs.io/concepts/what-is-ipfs/) if you want to know more about the concepts.
+
+Since our app is written in Next.js, we will use React with a custom hook. But you can take the functionality with any other JavaScript framework.
+
+## The code
+
+We will use the [ipfs-http-client](https://github.com/ipfs/js-ipfs/tree/master/packages/ipfs-http-client) library.
+
+```terminal
+npm i ipfs-http-client
+```
+
+```JSX
+import { create } from "ipfs-http-client";
+import { ImportCandidate } from "ipfs-core-types/src/utils";
+
+const client = create({ url: "https://ipfs.infura.io:5001/api/v0" });
+
+const useIpfs = () => {
+  const upload = async (file: ImportCandidate) => {
+    try {
+      const added = await client.add(file);
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+
+      return url;
+    } catch (error) {
+      console.error("Error uploading file: ", error);
+    }
+  };
+
+  return {
+    upload,
+  };
+};
+
+export default useIpfs;
+```
+
+The basic functionality takes 3 lines of code:
+
+- create a client with a gateway. There are different types of [gateway](https://docs.ipfs.io/concepts/ipfs-gateway/#overview) for IFPS. For our example, we use a free one by infura.io, but you can use other services or create your own.
+- Import a file or data into IPFS
+- Get the path of the stored file
+
+You can use this hook for storing anything you want on IPFS.
+
+```JSX
+const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const image = data.image[0];
+
+    /* upload an image */
+const imageUrl = await upload(image);
+
+    /* upload a file */
+const fileUrl = await upload(data.file);
+
+    /* upload a text */
+const textUrl = await upload("hello!);
+
+    /* upload a JSON */
+const jsonUrl = await upload(
+    JSON.stringify({
+    title: "hellocurator",
+    description: "We’re happy to introduce hellocurator",
+    })
+);
+
+    /* etc. */
+};
+```
+
+[GitHub Gist](https://gist.github.com/ibelick/b0d06dd5b3ef32f431e930f1bf4b3e78)
+
+<p className="text-sm text-right text-gray-600 dark:text-gray-400">
+  Published: {new Date(metadata.datePublished).toLocaleDateString()}{" "}
+  {metadata.dateModified
+    ? `❍ Last
+  update: ${new Date(metadata.dateModified).toLocaleDateString()}`
+    : null}
+</p>
+
+</article>
+````
