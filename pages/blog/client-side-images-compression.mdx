@@ -1,0 +1,97 @@
+import { NextSeo } from "next-seo";
+import { ArticleJsonLd } from "next-seo";
+
+export const metadata = {
+  title: "How to compress images on client-side",
+  description:
+    "How to compress images on client-side with JavaScript, TypeScript, React",
+  datePublished: "2022-04-07T00:00",
+  dateModified: null,
+};
+
+<NextSeo
+  title={metadata.title}
+  description={metadata.description}
+  openGraph={{
+    url: 'https://www.url.ie/a',
+    title: metadata.title,
+    description: metadata.description,
+  }}
+  canonical="https://julienthibeaut.xyz/client-side-images-compression"
+/>
+<ArticleJsonLd
+  url="https://julienthibeaut.xyz/client-side-images-compression"
+  title={metadata.title}
+  datePublished={metadata.datePublished}
+  dateModified={metadata.dateModified}
+  authorName="Julien Thibeaut"
+  publisherName="Julien Thibeaut"
+  description={metadata.description}
+/>
+<article className="prose py-12 max-w-screen-md px-6 mx-auto dark:prose-dark">
+
+# {metadata.title}
+
+Optimizing images on the web is a common thing. For [hellocurator](https://www.hellocurator.xyz/), we want to optimize images before the upload, we can do it without servers, on the client-side.
+
+The [Canvas element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) let manipulate images with Javascript quite easily.
+We can found a lot of [code examples](https://gist.github.com/1isten/0ec8c0bc78171c38a3d8b3cf48430a41) about how to compress image with the Canvas API.
+
+I will use [compressorjs](https://github.com/fengyuanchen/compressorjs), a tiny librarie ([3.8 kB minzipped](https://bundlephobia.com/package/compressorjs@1.1.1)).
+Compressor.js uses the Browser's native `HTMLCanvasElement.toBlob()` API to do the compression work, which means it is lossy compression.
+
+There's a [live Demo](https://fengyuanchen.github.io/compressorjs/) to play with it.
+
+## The code
+
+In some case, I like to wrap dependencies in my projects.
+So the code looks like:
+
+```JSX
+import Compressor from "compressorjs";
+
+export const compress = async (
+  file: File,
+  quality: number,
+  maxHeight: number,
+  maxWidth: number,
+  convertSize?: number
+): Promise<File | Blob> => {
+  return await new Promise((resolve, reject) => {
+    new Compressor(file, {
+      quality,
+      maxHeight,
+      maxWidth,
+      convertSize,
+      success: resolve,
+      error: reject,
+    });
+  });
+};
+```
+
+You can use more options, as provided in the [GitHub repo](https://github.com/fengyuanchen/compressorjs#options).
+
+And, to use it
+
+```JSX
+const upload async = (data) => {
+  const file = data.image[0];
+  const compressedFile = await compress(file, 0.6, 2000, 2000, 1000);
+  const imageUploaded = await upload(compressedFile);
+  ...
+}
+```
+
+[GitHub Gist](https://gist.github.com/ibelick/aeb88474d3c74277bd4ccc3dc03271ec)
+
+<p className="text-sm text-right text-gray-600 dark:text-gray-400">
+  Published: {new Date(metadata.datePublished).toLocaleDateString()}{" "}
+  {metadata.dateModified
+    ? `❍ Last
+  update: ${new Date(metadata.dateModified).toLocaleDateString()}`
+    : null}
+</p>
+
+</article>
+````

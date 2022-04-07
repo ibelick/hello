@@ -16,10 +16,10 @@ export const metadata = {
     title: metadata.title,
     description: metadata.description,
   }}
-  canonical="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
+  canonical="https://julienthibeaut.xyz/react-hook-upload-files-IPFS"
 />
 <ArticleJsonLd
-  url="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
+  url="https://julienthibeaut.xyz/react-hook-upload-files-IPFS"
   title={metadata.title}
   datePublished={metadata.datePublished}
   dateModified={metadata.dateModified}
@@ -82,26 +82,26 @@ You can use this hook for storing anything you want on IPFS.
 
 ```JSX
 const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    const image = data.image[0];
+  const image = data.image[0];
 
-    /* upload an image */
-const imageUrl = await upload(image);
+  /* upload an image */
+  const imageUrl = await upload(image);
 
-    /* upload a file */
-const fileUrl = await upload(data.file);
+  /* upload a file */
+  const fileUrl = await upload(data.file);
 
-    /* upload a text */
-const textUrl = await upload("hello!);
+  /* upload a text */
+  const textUrl = await upload("hello!");
 
-    /* upload a JSON */
-const jsonUrl = await upload(
-    JSON.stringify({
-    title: "hellocurator",
-    description: "We’re happy to introduce hellocurator",
+  /* upload a JSON */
+  const jsonUrl = await upload(
+      JSON.stringify({
+      title: "hellocurator",
+      description: "We’re happy to introduce hellocurator",
     })
-);
+  );
 
-    /* etc. */
+  /* etc. */
 };
 ```
 
