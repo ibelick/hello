@@ -10,8 +10,8 @@ type NowPage = {
 
 const NowPage: NextPage<NowPage> = ({ coverUrl, entries, lastUpdated }) => {
   return (
-    <section className="max-w-screen-md px-6 mx-auto py-20 mb-14">
-      <figure className="max-w-xs mb-10 rounded-lg overflow-hidden shadow-md">
+    <section className="max-w-screen mx-auto mb-14 px-6 py-12">
+      <figure className="mb-10 max-w-xs overflow-hidden rounded-lg shadow-md">
         {coverUrl ? (
           <Image
             loading="lazy"
@@ -28,7 +28,7 @@ const NowPage: NextPage<NowPage> = ({ coverUrl, entries, lastUpdated }) => {
       <p className="mb-4">
         What I’m doing <span className="italic">now</span>
       </p>
-      <ul className="list-disc list-inside">
+      <ul className="list-inside list-disc">
         {entries?.map((entrie, index) => (
           <li key={`${entrie}-${index}`} className="mb-1  ">
             {entrie}
@@ -42,7 +42,7 @@ const NowPage: NextPage<NowPage> = ({ coverUrl, entries, lastUpdated }) => {
         </a>
         ?
       </p>
-      <p className="text-sm text-right mt-8 text-gray-600 dark:text-gray-400">
+      <p className="mt-8 text-sm text-gray-600 dark:text-gray-400">
         Last updated: {new Date(lastUpdated).toLocaleDateString()}
       </p>
     </section>

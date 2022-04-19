@@ -44,7 +44,9 @@ export const getNow = async () => {
   ]);
 
   const entries = listDB.results.map((result: any) => {
-    return result.properties?.entry.title[0].plain_text;
+    return result.properties?.entry.title
+      .map((text: any) => text.plain_text)
+      .join("");
   });
 
   const lastUpdated = Math.max(
@@ -53,5 +55,11 @@ export const getNow = async () => {
     })
   );
 
-  return { entries, lastUpdated, coverUrl: dataDB?.cover?.file?.url || null };
+  return {
+    entries,
+    lastUpdated,
+    coverUrl: dataDB?.cover?.file?.url || null,
+    dataDB,
+    listDB,
+  };
 };

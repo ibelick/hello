@@ -16,7 +16,7 @@ type Posts = {
 
 const BlogPage = ({ posts }: BlogPageProps) => {
   return (
-    <section className="max-w-screen-md px-6 mx-auto py-36">
+    <section className="max-w-screen mx-auto px-6 py-12">
       <ul>
         {posts.map((post) => {
           return (
@@ -28,7 +28,7 @@ const BlogPage = ({ posts }: BlogPageProps) => {
                       {new Date(post.datePublished).toLocaleDateString()}
                     </span>
                     <span className="mx-1">✦</span>
-                    <span className="font-semibold text-gradient bg-gradient-to-r from-blue-500 to-purple-600 hover:bg-gradient-to-r">
+                    <span className="text-gradient bg-gradient-to-r from-blue-500 to-purple-600 font-semibold hover:bg-gradient-to-r">
                       {post.title}
                     </span>
                   </div>

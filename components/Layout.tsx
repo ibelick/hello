@@ -17,55 +17,33 @@ const Layout: FC = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col w-screen min-h-screen dark:bg-black">
-      <header className="w-full flex justify-center py-8 relative top-0">
-        <nav className="flex justify-between max-w-screen-md px-6 w-full dark:text-white">
-          <ul className="animate-spin">
-            <li>
-              <Link href="/">
-                <a>☻</a>
-              </Link>
-            </li>
-          </ul>
-          <ul className="flex justify-end">
-            <li className="mr-8">
-              <Link href="/blog">
-                <a>blog</a>
-              </Link>
-            </li>
-            <li className="mr-8">
-              <Link href="/now">
-                <a>now</a>
-              </Link>
-            </li>
-            <li>
-              <a onClick={switchTheme} className="cursor-pointer ">
-                <span className="flex transition-transform duration-500 ease-in-out transform hover:scale-50 dark:text-white">
-                  ●
-                </span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+    <div className="flex min-h-screen w-screen flex-col dark:bg-black">
       <main className="flex-1 dark:text-white">{children}</main>
-      <footer className="w-full flex justify-center py-8 relative top-0">
-        <nav className="flex flex-wrap justify-between max-w-screen-md px-6 w-full text-gray-600 dark:text-gray-400">
-          <ul className="flex">
-            <li>© {new Date().getFullYear()}</li>
-            <li className="mx-2">⎯⎯⎯⎯</li>
-            <li>
-              <a href="https://twitter.com/Ibelick">twitter</a>
-            </li>
-          </ul>
-          <ul className="flex justify-end">
-            <li className="flex">
-              <span className="flex text-red-600 mr-2">●</span>
-              Available for freelancing
-            </li>
-          </ul>
-        </nav>
-      </footer>
+      <div className="fixed inset-x-0 bottom-0 mx-auto mb-4 h-16 w-full max-w-md px-6 ">
+        <div className="flew-row mx-auto flex h-full w-full rounded-full border border-black/40 bg-white/30 backdrop-blur-sm dark:border-white dark:bg-black/30 dark:text-white">
+          <Link href="/">
+            <a className="my-auto mx-2 flex-1 cursor-pointer rounded-full p-3 text-center transition duration-200 hover:bg-gray-200/70 dark:hover:bg-gray-800/70">
+              Home
+            </a>
+          </Link>
+          <Link href="/blog">
+            <a className="my-auto mx-2 flex-1 cursor-pointer rounded-full p-3 text-center transition duration-200 hover:bg-gray-200/70 dark:hover:bg-gray-800/70">
+              Blog
+            </a>
+          </Link>
+          <Link href="/now">
+            <a className="my-auto mx-2 flex-1 cursor-pointer rounded-full p-3 text-center transition duration-200 hover:bg-gray-200/70 dark:hover:bg-gray-800/70">
+              Now
+            </a>
+          </Link>
+          <a
+            onClick={switchTheme}
+            className="my-auto mx-2 cursor-pointer rounded-full py-3 px-4 text-center transition duration-200 hover:bg-gray-200/70 dark:hover:bg-gray-800/70"
+          >
+            ●
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
