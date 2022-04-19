@@ -1,5 +1,4 @@
-import { NextSeo } from "next-seo";
-import { ArticleJsonLd } from "next-seo";
+import LayoutBlog from "components/LayoutBlog";
 
 export const metadata = {
   title: "Minimal blog with Next.js, Tailwind CSS, and markdown (MDX)",
@@ -9,26 +8,9 @@ export const metadata = {
   dateModified: null,
 };
 
-<NextSeo
-  title={metadata.title}
-  description={metadata.description}
-  openGraph={{
-    url: 'https://www.url.ie/a',
-    title: metadata.title,
-    description: metadata.description,
-  }}
-  canonical="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
-/>
-<ArticleJsonLd
-  url="https://julienthibeaut.xyz/nextjs-tailwindcss-markdown-mdx-minimal-blog"
-  title={metadata.title}
-  datePublished={metadata.datePublished}
-  dateModified={metadata.dateModified}
-  authorName="Julien Thibeaut"
-  publisherName="Julien Thibeaut"
-  description={metadata.description}
-/>
-<article className="prose py-12 max-w-screen-md px-6 mx-auto dark:prose-dark">
+<LayoutBlog 
+  {...metadata}
+>
 
 # {metadata.title}
 
@@ -253,12 +235,4 @@ Now we have a minimal blog built with Next.js, Tailwind CSS, and MDX. We can go 
 
 This is my first blog post, hope you liked it. You can dm me on Twitter if you have any questions. Thanks for reading!
 
-<p className="text-sm text-right text-gray-600 dark:text-gray-400">
-  Published: {new Date(metadata.datePublished).toLocaleDateString()}{" "}
-  {metadata.dateModified
-    ? `❍ Last
-  update: ${new Date(metadata.dateModified).toLocaleDateString()}`
-    : null}
-</p>
-
-</article>
+</LayoutBlog >

@@ -1,5 +1,4 @@
-import { NextSeo } from "next-seo";
-import { ArticleJsonLd } from "next-seo";
+import LayoutBlog from "components/LayoutBlog";
 
 export const metadata = {
   title: "How to compress images on client-side",
@@ -9,26 +8,9 @@ export const metadata = {
   dateModified: null,
 };
 
-<NextSeo
-  title={metadata.title}
-  description={metadata.description}
-  openGraph={{
-    url: 'https://www.url.ie/a',
-    title: metadata.title,
-    description: metadata.description,
-  }}
-  canonical="https://julienthibeaut.xyz/client-side-images-compression"
-/>
-<ArticleJsonLd
-  url="https://julienthibeaut.xyz/client-side-images-compression"
-  title={metadata.title}
-  datePublished={metadata.datePublished}
-  dateModified={metadata.dateModified}
-  authorName="Julien Thibeaut"
-  publisherName="Julien Thibeaut"
-  description={metadata.description}
-/>
-<article className="prose py-12 max-w-screen-md px-6 mx-auto dark:prose-dark">
+<LayoutBlog 
+  {...metadata}
+>
 
 # {metadata.title}
 
@@ -85,13 +67,4 @@ const upload async = (data) => {
 
 [GitHub Gist](https://gist.github.com/ibelick/aeb88474d3c74277bd4ccc3dc03271ec)
 
-<p className="text-sm text-right text-gray-600 dark:text-gray-400">
-  Published: {new Date(metadata.datePublished).toLocaleDateString()}{" "}
-  {metadata.dateModified
-    ? `❍ Last
-  update: ${new Date(metadata.dateModified).toLocaleDateString()}`
-    : null}
-</p>
-
-</article>
-````
+</LayoutBlog>
