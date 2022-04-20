@@ -6,6 +6,7 @@ export const metadata = {
     "How to build a minimal blog with Next.js, Tailwind CSS, and MDX?",
   datePublished: "2021-07-23T00:00",
   dateModified: null,
+  path: "nextjs-tailwindcss-markdown-mdx-minimal-blog",
 };
 
 <LayoutBlog 
@@ -189,7 +190,7 @@ In the same file we can do:
 ```jsx
 const Blog = ({ posts }) => {
   return (
-    <section className="max-w-screen-md px-6 mx-auto py-36 min-h-screen">
+    <section className="mx-auto min-h-screen max-w-screen-md px-6 py-36">
       <ul>
         {posts.map((post) => {
           return (

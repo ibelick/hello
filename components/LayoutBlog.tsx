@@ -6,15 +6,8 @@ interface LayoutBlogProps {
   description: string;
   datePublished: string;
   dateModified?: string;
+  path: string;
 }
-
-export const metadata = {
-  title: "How to compress images on client-side",
-  description:
-    "How to compress images on client-side with JavaScript, TypeScript, React",
-  datePublished: "2022-04-07T00:00",
-  dateModified: null,
-};
 
 const LayoutBlog: React.FC<LayoutBlogProps> = ({
   children,
@@ -22,6 +15,7 @@ const LayoutBlog: React.FC<LayoutBlogProps> = ({
   description,
   datePublished,
   dateModified,
+  path,
 }) => {
   return (
     <>
@@ -33,10 +27,10 @@ const LayoutBlog: React.FC<LayoutBlogProps> = ({
           title: title,
           description: description,
         }}
-        canonical="https://julienthibeaut.xyz/client-side-images-compression"
+        canonical={`https://julienthibeaut.xyz/blog/${path}`}
       />
       <ArticleJsonLd
-        url="https://julienthibeaut.xyz/client-side-images-compression"
+        url={`https://julienthibeaut.xyz/blog/${path}`}
         title={title}
         datePublished={datePublished}
         dateModified={dateModified}
@@ -45,9 +39,9 @@ const LayoutBlog: React.FC<LayoutBlogProps> = ({
         description={description}
         images={["https://www.julienthibeaut.xyz/meta.jpg"]}
       />
-      <article className="prose py-12 max-w-screen-md px-6 mx-auto dark:prose-dark">
+      <article className="prose mx-auto max-w-screen-md py-12 px-6 dark:prose-dark">
         {children}
-        <p className="text-sm text-right text-gray-600 dark:text-gray-400">
+        <p className="text-right text-sm text-gray-600 dark:text-gray-400">
           Published: {new Date(datePublished).toLocaleDateString()}{" "}
           {dateModified
             ? `❍ Last
